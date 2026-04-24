@@ -14,8 +14,9 @@ def save_model(model, optimizer, scheduler, epoch, loss, path):
 def load_model(model, optimizer, scheduler, path):
   checkpoint = torch.load(path, map_location=device)
   model.load_state_dict(checkpoint['model_state_dict'])
-  optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-  scheduler.load_state_dict(checkpoint['scheduler_state_dict'])
+  
+  if optimizer is not None: optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+  if scheduler is not None: scheduler.load_state_dict(checkpoint['scheduler_state_dict'])
   epoch = checkpoint['epoch']
   loss = checkpoint['loss']
   return epoch, loss
