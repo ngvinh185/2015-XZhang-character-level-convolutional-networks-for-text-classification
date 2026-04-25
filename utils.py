@@ -2,6 +2,7 @@ import os
 import torch
 import logging
 from config import device
+from dataset import alphabet
 def save_model(model, optimizer, scheduler, epoch, loss, path):
   torch.save({
     'epoch': epoch,
@@ -32,3 +33,14 @@ def get_logger(logs_dir = 'logs'):
     ]
   )
   return logging.getLogger()
+
+
+def decode(x):
+  s = ""
+  print(len(x))
+  for i in range(1014):
+    for j in range(70):
+      if(x[j][i] == 1):
+        s += alphabet[j]
+        break
+  return s 
