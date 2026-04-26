@@ -24,15 +24,15 @@ class CharCNN(nn.Module):
         nn.MaxPool1d(kernel_size=3)
     )
     self.fc = nn.Sequential(
-        nn.Linear(in_features=8704, out_features=2048),
+        nn.Linear(in_features=8704, out_features=1024),
         nn.ReLU(),
         nn.Dropout(0.5),
 
-        nn.Linear(in_features=2048, out_features=2048),
+        nn.Linear(in_features=1024, out_features=1024),
         nn.ReLU(),
         nn.Dropout(0.5),
 
-        nn.Linear(in_features=2048, out_features=num_class)
+        nn.Linear(in_features=1024, out_features=num_class)
     )
     self.apply(self._init_weights)
   def _init_weights(self, module):
