@@ -119,3 +119,4 @@ scheduler = torch.optim.lr_scheduler.StepLR(
     optimizer, step_size=20, gamma=0.1
 )
 ```
+![Train Process](./training_progress_separate.png)
